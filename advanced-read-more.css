@@ -1,0 +1,33 @@
+/*
+//-------------------------------------------------------------------------------------
+// Advanced jQuery Read More Stylesheet
+//-------------------------------------------------------------------------------------
+// Created          2016-08-29
+// Changed          2016-09-01
+// Authors          David Whitworth | David@Whitworth.de
+//-------------------------------------------------------------------------------------
+// 2016-08-29       Created
+// 2016-09-01 DW    removed the additional _jrm-settings.less as it was obsolete
+//-------------------------------------------------------------------------------------
+// Copyright (c) 2016
+//-------------------------------------------------------------------------------------
+*/
+/* GENERAL --> */
+/* <-- GENERAL */
+/* SECTIONS --> */
+.jrm-truncate {
+  overflow: hidden;
+}
+.jrm-truncate.jrm-reduced.jrm-textOnly img,
+.jrm-truncate.jrm-reduced.jrm-textOnly table {
+  display: none;
+}
+.jrm-toggle {
+  display: inline-block;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.jrm-reduced + .jrm-toggle {
+  margin-top: 0.8em;
+}

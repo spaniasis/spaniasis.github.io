@@ -1,0 +1,204 @@
+﻿/*$(document).ready(function () {
+    // run test on initial page load
+    checkSize();
+
+    // run test on resize of the window
+    $(window).resize(checkSize);
+});*/
+
+//Function to the css rule
+/*function checkSize() {
+    if ($("#health-info-toggle").css("display") == "block") {
+        $(".dropdown-toggle").attr("data-toggle", "dropdown").removeAttr("data-hover");
+    }
+    if (($("#health-info-toggle").css("display") == "none") && ($(".dropdown-toggle").attr("data-toggle") == "dropdown")) {
+        $(".dropdown-toggle").attr("data-hover", "dropdown").removeAttr("data-toggle");
+    }
+}*/
+
+// Function to get path
+/*function getAbsolutePath() {
+        var loc = window.location;
+        var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+        return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+    }
+    var path = getAbsolutePath();
+    if (path = '/recursos-de-salud/articulos-de-salud/') {*/
+    
+$(document).ready(function () {
+
+    $('#accordion').on('shown', function () {
+        $(".icon-chevron-down").removeClass("icon-chevron-down").addClass("icon-chevron-up");
+    });
+
+    $('#accordion').on('hidden', function () {
+        $(".icon-chevron-up").removeClass("icon-chevron-up").addClass("icon-chevron-down");
+    });
+    $(function () {
+        if ($(location).attr('pathname') == "/recursos-de-salud/articulos-de-salud/") $('.slideshowCamera').camera({
+            navigation: true,
+            navigationHover: false,
+            mobileNavHover: false,
+            playPause: true,
+            pagination: true,
+            thumbnails: false,
+            overlayer: false,
+            pieDiameter: 42,
+            piePosition: 'leftBottom',
+            minHeight: '460px',
+            autoAdvance: false
+        });
+    });
+    $('a.english').attr("hreflang", "en");
+    $('a').not('.english').attr("hreflang", "es");
+    $('span.fa-file-pdf-o').wrap("<a href='https://get.adobe.com/reader/' hreflang='en' target='_blank' title='Adobe Acrobat Reader DC Download | Free PDF viewer for Windows, Mac OS, Android'></a>");
+    if ($(location).attr('pathname') == '/pregunta-a-carla/su-guia-de-informacion-sobre-la-salud/') {
+        $('#askCarla').hide();
+    };
+
+    //auto detect a-z buttons
+    for (var i =  0; i < $('.temas-letter-group').length; i++) {
+        var letterGroup = $($('.temas-letter-group').get(i));
+        if(!(letterGroup.find('.letter-group').html().replace(/\s/ig, '').length)){
+            letterGroup.addClass('hidden');
+            $($('.indicies li').get(i)).find('a').attr('tabindex', -1);
+            $($('.indicies li').get(i)).find('a').addClass('disabled').attr('title', 'link disabled');
+        }
+    };
+
+    $('.js #main-navbar-collapse ul li').css('visibility', 'inherit');
+    
+	// MATCH-HEIGHT JQUERY PLUGIN /////////////////////
+	// From https://github.com/liabru/jquery-match-height
+	$('.match-height-item').matchHeight({
+		byRow: false,
+		property: 'height'
+	});
+	$('.match-height-item-2').matchHeight({
+		byRow: false,
+		property: 'height'
+	});
+	
+	// HIDEMAXLISTITEM EXPANDER JQUERY PLUGIN /////////////////////
+	// From https://github.com/jawinn/Hide-Max-List-Items-Expander-jQuery-Plugin
+	$('ul.hide-max-list-item-2').hideMaxListItems({ 
+		'max':2, 
+		'speed':500, 
+		'moreText':'<a class="btn btn-learn-more" href="#">Mostrar más ([COUNT])</a>', 
+		'lessText':'<a class="btn btn-learn-more" href="#">Mostrar menos</a>' 
+	});
+	$('ul.hide-max-list-item-3').hideMaxListItems({ 
+		'max':3, 
+		'speed':500, 
+		'moreText':'<a class="btn btn-learn-more" href="#">Mostrar más ([COUNT])</a>', 
+		'lessText':'<a class="btn btn-learn-more" href="#">Mostrar menos</a>' 
+	});
+	
+	/*
+	// COLLAPSER JQUERY PLUGIN /////////////////////
+	$('.collapser-container-show-5-lines').collapser({
+		mode: 'lines',
+		truncate: 5,
+		showText: '<a class="btn btn-lg btn-learn-more" href="#">Leer más</a>',
+		hideText: '<a class="btn btn-lg btn-learn-more" href="#">Leer menos</a>'
+	});
+	$('.collapser-container-show-8-lines').collapser({
+		mode: 'lines',
+		truncate: 8,
+		showText: '<a class="btn btn-lg btn-learn-more" href="#">Leer más</a>',
+		hideText: '<a class="btn btn-lg btn-learn-more" href="#">Leer menos</a>'
+	});
+	*/
+	
+	// JQUERY ADVANCED READ MORE PLUGIN /////////////////////
+	// From https://github.com/Manostion/Advanced-jQuery-Read-More
+//	 $('body').readMore({
+//        showLines: 5,
+//        showParagraph: true,
+//        linkCaption: 'Sigue leyendo',
+        // linkCloseCaption: 'Leer menos',
+//        linking: 'open only'
+ //   });
+	
+	// JQUERY CUSTOM READ MORE PLUGIN /////////////////////
+	// From https://www.jqueryscript.net/text/Read-More-Less-Buttons.html
+	$(".read-more").readmore({
+		hideText: "Ver menos",
+		readText: "Ver más",
+		effect: true,
+		effectOption: "slow",
+        buttonClasses: "btn btn-learn-more",
+		multiple: true
+	});
+	
+	// TOOLTIP /////////////////////
+	$(".define").tooltip();
+		
+});
+
+//Initiation for example 7
+$(function () {
+    $('a.ex7').leaveNotice({
+        siteName: "",
+        exitMessage: "<p>Está siendo dirigido a MedlinePlus en español<span class='hidden-xs pop'> <strong>{https://www.nlm.nih.gov/medlineplus/spanish/}</strong></span> un servicio de información en línea, producida por la Biblioteca Nacional de Medicina (NLM por sus siglas en inglés) de los NIH, que desde su fundación, en 1836, ha puesto a disposición del público amplios recursos e información de muchas organizaciones médicas, científicas y de salud pública.</p> <P>	You are being directed to MedlinePlus in Spanish <span class='hidden-xs pop'><strong>{https://www.nlm.nih.gov/medlineplus/spanish/}</strong></span>, an online information service produced by NIH's National Library of Medicine (NLM) that has, since its founding in 1836, made available vast information and resources from many medical, scientific, and public health organizations.</p>",
+        preLinkMessage: '<hr><p style="align-items:center"><strong><span>{URL}</span></strong></p><hr>',
+        overlayId: "custom-blackout",
+        messageBoxId: "custom-messageBox",
+        messageBoxHolder: "custom-messageHolder",
+        overlayAlpha: 0.6,
+        newWindow: true
+    });
+
+  // JQUERY COLLAPSE PLUGIN /////////////////////
+  // From https://github.com/danielstocks/jQuery-Collapse/tree/523c08f9747b42251e8a1fd84154ed0a2e1b979a
+  $(function jqueryCollapse() {
+      $(".collapsible-with-controls").prepend('<ul class="collapsible-control-all"><li><button class="collapsible-open-all">Open all</button></li><li><button class="collapsible-close-all">Close all</button></li></ul>');  
+      $(".collapsible").collapse({
+        open: function() {
+          this.slideDown(500);
+        },
+        close: function() {
+          this.slideUp(500);
+        },
+        query: '.collapsible-trigger',
+        accordion: false,
+        // persist: true
+      });
+      var el = $(".collapsible");
+      $(".collapsible-open-all").click(function() {
+        $(".collapsible").trigger("open")
+      });
+      $(".collapsible-close-all").click(function() {
+        $(".collapsible").trigger("close")
+      });	
+  });
+
+  // OPEN EXTERNAL LINKS IN A NEW WINDOW /////////////////////
+  // From https://stackoverflow.com/questions/12071254/open-all-external-links-open-in-a-new-tab-apart-from-a-domain 
+  // and scroll down to comment #3
+	var all_links = document.querySelectorAll('a');
+	for (var i = 0; i < all_links.length; i++){
+		 var a = all_links[i];
+		 if(a.hostname != location.hostname) {
+				a.rel = 'noopener';
+					a.target = '_blank';
+		 }
+	}
+	
+  // SCROLL TO TOP /////////////////////
+	var offset = 700;
+	var duration = 1000;
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > offset) {
+			$('.uptotop').fadeIn(duration);
+		} else {
+			$('.uptotop').fadeOut(duration);
+		}
+	});
+	$('.uptotop').click(function(event) {
+		event.preventDefault();
+		$('html, body').animate({scrollTop: 0}, duration);
+		return false;
+	}); 
+
+});
